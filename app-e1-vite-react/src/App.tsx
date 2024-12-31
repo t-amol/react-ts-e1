@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useMemo, useState } from 'react';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import { Layout } from './components/Layout';
+import { PageDefault } from './components/PageDefault';
+
+import { AppContext, ThemeModeContext } from './contexts';
+import { AppClient } from './clients';
+import { routes } from './config';
+import { Route as AppRoute } from './types';
+import { getAppTheme } from './styles/theme';
+import { DARK_MODE_THEME, LIGHT_MODE_THEME } from './utils/constants';
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [mode, setMode] = useState<typeof LIGHT_MODE_THEME | typeof DARK_MODE_THEME>(LIGHT_MODE_THEME);
+	const appClient = new AppClient();
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	const themeMode = useMemo(
+		() => ({
+			toggleThemeMode: () => {
+				setMode((prevMode) => (prevMode === LIGHT_MODE_THEME ? DARK_MODE_THEME : LIGHT_MODE_THEME));
+			},
+		}),
+		[]
+	);
+
+	const theme = useMemo(() => getAppTheme(mode), [mode]);
+
+	const addRoute = (route: AppRoute) => (
+		<Route key={route.key} path={route.path} component={route.component || PageDefault} exact />
+	);
+
+	return (
+		<AppContext.Provider value={appClient}>
+			<ThemeModeContext.Provider value={themeMode}>
+				<ThemeProvider theme={theme}>
+					<CssBaseline />
+					<Router>
+						<Layout >
+							<Routes>
+								{routes.map((route: AppRoute) =>
+									route.subRoutes ? route.subRoutes.map((item: AppRoute) => addRoute(item)) : addRoute(route)
+								)}
+								</Routes>
+							</Layout>
+					</Router>
+				</ThemeProvider>
+			</ThemeModeContext.Provider>
+		</AppContext.Provider>
+	);
 }
 
-export default App
+export default App;
