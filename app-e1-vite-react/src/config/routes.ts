@@ -14,6 +14,8 @@ import {
 import { Home } from '../pages/Home';
 
 import { Route } from '../types/Route';
+import {TableAgGrid} from '@/components/TableAgGrid/TableAgGrid';
+import { FormJson } from '@/components/FormJson';
 
 const routes: Array<Route> = [
 	{
@@ -25,6 +27,24 @@ const routes: Array<Route> = [
 		isEnabled: true,
 		icon: HomeIcon,
 		appendDivider: true,
+	},
+	{
+		key: 'router-user',
+		title: 'User',
+		description: 'User',
+		path: '/user',
+		component: FormJson,
+		isEnabled: true,
+		icon: UserIcon,
+	},
+	{
+		key: 'router-users',
+		title: 'Users',
+		description: 'Users',
+		path: '/users',
+		component: TableAgGrid,
+		isEnabled: true,
+		icon: UserIcon,
 	},
 	{
 		key: 'router-dashboard',

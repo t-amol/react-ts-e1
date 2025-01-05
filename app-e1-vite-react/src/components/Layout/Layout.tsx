@@ -8,6 +8,8 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 
 import { FOOTER_HEIGHT } from '../../utils/constants';
+import { TableAgGrid } from '../TableAgGrid';
+import { FormJson } from '../FormJson';
 
 export const Layout: FC = ({ children }) => {
 	const [open, setOpen] = useState(false);
@@ -29,8 +31,8 @@ export const Layout: FC = ({ children }) => {
 					<Header toggleNavigation={toggleNavigation} />
 				</Box>
 				<Navigation open={open} handleClose={toggleNavigation} />
-				<Box component='main' sx={{ flexGrow: 1, p: 3, pt: 10 }}>
-					{children}
+				<Box component={TableAgGrid} sx={{ flexGrow: 1, p: 3, pt: 10 }}>
+					
 				</Box>
 			</div>
 			<Box component='footer'>

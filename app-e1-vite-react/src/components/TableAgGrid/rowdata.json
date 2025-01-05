@@ -1,0 +1,72 @@
+[
+    {
+       "id":1,
+       "name":"John Doe",
+       "age":30,
+       "department":"Engineering",
+       "salary":75000
+    },
+    {
+       "id":2,
+       "name":"Jane Smith",
+       "age":25,
+       "department":"Marketing",
+       "salary":65000
+    },
+    {
+       "id":3,
+       "name":"Samuel Green",
+       "age":35,
+       "department":"HR",
+       "salary":80000
+    },
+    {
+       "id":4,
+       "name":"Lisa Brown",
+       "age":28,
+       "department":"Sales",
+       "salary":72000
+    },
+    {
+       "id":5,
+       "name":"Paul Black",
+       "age":45,
+       "department":"Engineering",
+       "salary":95000
+    },
+    {
+      "id":6,
+      "name":"AJohn Doe",
+      "age":30,
+      "department":"Engineering",
+      "salary":75000
+   },
+   {
+      "id":7,
+      "name":"BJane Smith",
+      "age":25,
+      "department":"Marketing",
+      "salary":65000
+   },
+   {
+      "id":8,
+      "name":"CSamuel Green",
+      "age":35,
+      "department":"HR",
+      "salary":80000
+   },
+   {
+      "id":9,
+      "name":"DLisa Brown",
+      "age":28,
+      "department":"Sales",
+      "salary":72000
+   },
+   {
+      "id":10,
+      "name":"EPaul Black",
+      "age":45,
+      "department":"Engineering",
+      "salary":95000
+   }    
+ ]

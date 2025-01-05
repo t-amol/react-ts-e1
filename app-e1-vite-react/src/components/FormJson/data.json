@@ -1,0 +1,20 @@
+{
+    "firstName": "John",
+    "secondName": "Doe",
+    "vegetarian": true,
+    "birthDate": "1985-06-02",
+    "nationality": "DE",
+    "provideAddress": true,
+    "address": {
+      "street": "test",
+      "streetNumber": "5",
+      "city": "California",
+      "postalCode": "121"
+    },
+    "vegetarianOptions": {
+      "vegan":true,
+      "favoriteVegetable": "Tomato"
+    },
+    "otherFavoriteVegetable": "Cabbage"
+  }
+  
