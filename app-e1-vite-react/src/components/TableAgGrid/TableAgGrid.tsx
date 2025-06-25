@@ -45,6 +45,7 @@ import columndefinitions from './columndefinitions.json';
 import rowdata from './rowdata.json';
 import { Download, Search, Upload } from "@mui/icons-material";
 import { Plus as PlusIcon } from '@phosphor-icons/react/dist/ssr/Plus';
+import { Box } from "@mui/system";
 
 ModuleRegistry.registerModules([
   AdvancedFilterModule,
@@ -217,9 +218,22 @@ export function TableAgGrid(): React.JSX.Element {
 };
 
   return (
-
-    <Stack spacing={3} width="100%">
-    <Stack direction="row" spacing={3}>
+ <Box
+ sx={{
+   display: 'flex',
+   flexDirection: 'column',
+   justifyContent: 'center',
+   alignItems: 'center',
+   padding: 4,
+   backgroundColor: '#f4f4f4',
+   borderRadius: 2,
+   boxShadow: 2,
+   minWidth: 'calc(100vw - 250px)',
+   margin: 'auto',
+   minHeight: 'calc(100vh - 60px)', // Adjust for header height
+ }}
+>
+    <Stack direction="row" >
       <Stack spacing={1} sx={{ flex: '1 1 auto' }}>
         <Typography variant="h4">Users</Typography>
         <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
@@ -233,8 +247,7 @@ export function TableAgGrid(): React.JSX.Element {
           Advanced Filter
           </Button>
         </Stack>
-      </Stack>
-	  <Stack direction="row" spacing={3} height={1} sx={{ alignItems: 'right' }}>
+        <Stack direction="row" spacing={1} height={1} sx={{ alignItems: 'right' }}>
           <Button  startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
             Add
           </Button>
@@ -245,8 +258,9 @@ export function TableAgGrid(): React.JSX.Element {
             Cancel
           </Button>
         </Stack>
-
     </Stack>
+
+      </Stack>
     <Stack>
       <div>
       <Card sx={{ p: 2 , spacing: 3}}>
@@ -286,8 +300,6 @@ export function TableAgGrid(): React.JSX.Element {
         />
       </div>
     </Stack>
-  </Stack>
-
-
+ </Box>
   );
 };

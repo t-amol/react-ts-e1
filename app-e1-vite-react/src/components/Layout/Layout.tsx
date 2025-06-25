@@ -10,8 +10,13 @@ import { Footer } from '../Footer';
 import { FOOTER_HEIGHT } from '../../utils/constants';
 import { TableAgGrid } from '../TableAgGrid';
 import { FormJson } from '../FormJson';
+import { MainContent } from '../MainContent';
 
-export const Layout: FC = ({ children }) => {
+interface LayoutProps {
+	children: React.ReactNode;
+  }
+  
+export const Layout: FC = ({ children }: LayoutProps) => {
 	const [open, setOpen] = useState(false);
 	const toggleNavigation = () => setOpen((status) => !status);
 
@@ -31,9 +36,11 @@ export const Layout: FC = ({ children }) => {
 					<Header toggleNavigation={toggleNavigation} />
 				</Box>
 				<Navigation open={open} handleClose={toggleNavigation} />
-				<Box component={TableAgGrid} sx={{ flexGrow: 1, p: 3, pt: 10 }}>
-					
-				</Box>
+				<MainContent open={open} handleClose={toggleNavigation} />
+				{/* 
+				<Box component='main' sx={{ flexGrow: 1, p: 3, pt: 10 }}>
+					{children}					
+				</Box> */}
 			</div>
 			<Box component='footer'>
 				<Footer />
